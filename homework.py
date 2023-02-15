@@ -25,7 +25,7 @@ class InfoMessage:
 class Training:
     """Базовый класс тренировки."""
     LEN_STEP: float = 0.65
-    M_IN_KM: int = 1000
+    M_IN_KM: float = 1000
     MIN_IN_HOUR: int = 60
 
     def __init__(self,
@@ -48,7 +48,7 @@ class Training:
     @abstractmethod
     def get_spent_calories(self) -> float:
         """Получить количество затраченных калорий."""
-        pass
+        raise NotImplementedError()
 
     def show_training_info(self) -> InfoMessage:
         """Вернуть информационное сообщение о выполненной тренировке."""
