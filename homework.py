@@ -56,14 +56,13 @@ class Training:
                            self.duration,
                            self.get_distance(),
                            self.get_mean_speed(),
-                           self.get_spent_calories()
-                           )
+                           self.get_spent_calories())
 
 
 class Running(Training):
     """Тренировка: бег."""
     CALORIES_MEAN_SPEED_MULTIPLIER: int = 18
-    CALORIES_MEAN_SPEED_SHIFT: int = 1.79
+    CALORIES_MEAN_SPEED_SHIFT: float = 1.79
 
     def __init__(self,
                  action: int,
@@ -106,8 +105,8 @@ class SportsWalking(Training):
 class Swimming(Training):
     """Тренировка: плавание."""
     LEN_STEP: float = 1.38
-    SWIM_1: float = 1.1
-    SWIM_2: int = 2
+    CALORIES_MEAN_SPEED_SWIMMING_1: float = 1.1
+    CALORIES_MEAN_SPEED_SWIMMING_2: int = 2
 
     def __init__(self,
                  action: int,
@@ -125,8 +124,8 @@ class Swimming(Training):
                 / self.duration)
 
     def get_spent_calories(self) -> float:
-        return ((self.get_mean_speed() + self.SWIM_1)
-                * self.SWIM_2
+        return ((self.get_mean_speed() + self.CALORIES_MEAN_SPEED_SWIMMING_1)
+                * self.CALORIES_MEAN_SPEED_SWIMMING_2
                 * self.weight * self.duration)
 
 
